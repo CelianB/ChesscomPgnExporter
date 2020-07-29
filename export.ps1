@@ -13,8 +13,8 @@ foreach ($archive_url in $archivesReq) {
     ## archive_url : format : https://api.chess.com/pub/player/user/games/yyyy/mm
     $pourcent = ($i*100)/$archivesReq.length
     $splitter = $archive_url -split '/'
-    $m = $splitter[-2]
-    $y = $splitter[-1]
+    $m = $splitter[-1]
+    $y = $splitter[-2]
     Write-Progress -Activity Updating -Status "Downloading $m/$y" -PercentComplete $pourcent
     $i+=1
     $games = (Invoke-WebRequest -URI $archive_url | ConvertFrom-Json).games
